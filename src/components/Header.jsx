@@ -32,7 +32,7 @@ export default function Header() {
   }, []);
 
   const updateCartInfo = () => {
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const savedCart = localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart')) || [];
     const totalCount = savedCart.reduce((sum, item) => sum + (item.quantity || 0), 0);
     const totalPrice = savedCart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0);
     setCartCount(totalCount);
@@ -94,7 +94,7 @@ export default function Header() {
           <i className="fa-solid fa-bars" />
         </button>
 
-        <h1>Ser Gosht</h1>
+        <h1>Hello world</h1>
         <div className={'header-icons'}>
           <i className="fa-solid fa-circle-info"></i>
           <i
