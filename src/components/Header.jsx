@@ -94,7 +94,7 @@ export default function Header() {
           <i className="fa-solid fa-bars" />
         </button>
 
-        <h1>Hello world</h1>
+        <h1>Ser Gosht</h1>
         <div className={'header-icons'}>
           <i className="fa-solid fa-circle-info"></i>
           <i

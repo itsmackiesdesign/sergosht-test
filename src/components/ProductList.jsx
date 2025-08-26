@@ -11,7 +11,7 @@ export default function ProductList() {
     try {
       const cartItem = {
         id: product.id,
-        image: product.image,
+        image: MEDIA_URL + product.image,
         title: product.title,
         variation: null,
         variation_id: null,
@@ -67,7 +67,7 @@ export default function ProductList() {
                       <div key={id} className={tag.class_name}>{tag.title}</div>
                     ))}
                   </div>
-
+                  
                   <Link to={`/detail/${product.id}`} className="product-link">
                     <div className="img-container">
                       <img
@@ -76,7 +76,7 @@ export default function ProductList() {
                         alt={product.title}
                       />
                     </div>
-
+                    
                     <div className="product-info">
                       <h5>{product.title}</h5>
                       <h6>{product.show_on_card}</h6>
@@ -84,8 +84,8 @@ export default function ProductList() {
                     </div>
                   </Link>
 
-                  <button
-                    className="plus-btn"
+                  <button 
+                    className="plus-btn" 
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();

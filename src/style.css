@@ -328,9 +328,11 @@ body {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-  padding: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Немного уменьшена ширина */
+  gap: 20px;
+  /* Уменьшен отступ между карточками */
+  padding: 15px;
 }
 
 .card {
@@ -341,6 +343,7 @@ body {
   position: relative;
   text-align: center;
   height: 280px;
+  /* Еще больше уменьшена высота карточки */
   display: flex;
   flex-direction: column;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -357,14 +360,17 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 12px;
+  /* Уменьшен внутренний отступ */
 }
 
 .img-container {
-  height: 140px;
+  height: 150px;
+  /* Немного уменьшена высота для изображения */
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  /* Уменьшен отступ снизу */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,8 +378,14 @@ body {
 }
 
 .img-card {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  /* Максимальная ширина изображения */
+  max-height: 100%;
+  /* Максимальная высота изображения */
+  width: auto;
+  /* Автоматическая ширина для сохранения пропорций */
+  height: auto;
+  /* Автоматическая высота для сохранения пропорций */
   object-fit: cover;
   border-radius: 8px;
 }
@@ -384,23 +396,31 @@ body {
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
+  padding: 2px 0;
+  /* Еще больше уменьшен вертикальный отступ */
 }
 
 .card h5 {
-  margin: 0 0 5px 0;
+  margin: 0 0 3px 0;
+  /* Еще больше уменьшен отступ */
   font-size: 14px;
+  /* Уменьшен размер шрифта */
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.2;
+  /* Уменьшена высота строки */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  min-height: 36px;
+  min-height: 30px;
+  /* Уменьшена минимальная высота */
 }
 
 .card h6 {
-  margin: 0 0 8px 0;
+  margin: 0 0 3px 0;
+  /* Уменьшен отступ */
   font-size: 12px;
+  /* Уменьшен размер шрифта */
   color: #666;
   font-weight: normal;
   overflow: hidden;
@@ -411,21 +431,24 @@ body {
 .card h3 {
   margin: 0;
   font-size: 16px;
+  /* Немного уменьшен размер шрифта цены */
   font-weight: bold;
   color: #000;
 }
 
 .plus-btn {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  /* Увеличен отступ от низа */
+  right: 15px;
+  /* Увеличен отступ от правого края */
   background-color: #007AFF;
   border: none;
   border-radius: 8px;
   color: white;
-  width: 32px;
-  height: 32px;
-  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -447,8 +470,8 @@ body {
 /* Tags */
 .tags {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 10px;
+  left: 10px;
   font-weight: bold;
   z-index: 5;
   font-size: 12px;
@@ -541,24 +564,33 @@ body {
 @media (max-width: 768px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 5px;
+    gap: 15px;
+    /* Увеличен отступ для мобильных */
+    padding: 10px;
   }
 
   .card {
     height: 260px;
+    /* Уменьшена высота для мобильных */
   }
 
   .img-container {
-    height: 120px;
+    height: 160px;
+    /* Пропорционально уменьшена для мобильных */
+  }
+
+  .img-card {
+    width: 85%;
+    /* Немного больше для мобильных устройств */
+    height: 85%;
   }
 
   .card h5 {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .card h3 {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
