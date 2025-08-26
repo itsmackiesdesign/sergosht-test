@@ -1210,9 +1210,9 @@ body {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  /* transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); */
+
   color: black;
-  /* background-color: white; */
+
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -1220,7 +1220,6 @@ body {
 
 .cart-tab:hover {
   background-color: rgb(255, 255, 255);
-  transform: translateY(-1px);
   transition: 0.5s;
 }
 
@@ -1885,6 +1884,44 @@ body {
   font-weight: 600;
 }
 
+/* Добавьте эти стили к вашему существующему CSS файлу */
+
+/* Активное состояние для табов */
+.cart-tab.active {
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-tab:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+/* Стили для скидки за баллы */
+.cart-bonus-discount-section {
+  margin: 16px 20px;
+  padding: 16px;
+  background-color: #f3e5f5;
+  border-radius: 12px;
+  border-left: 4px solid #9c27b0;
+}
+
+.cart-bonus-discount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #4a148c;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cart-bonus-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
 
 /* cart */
 

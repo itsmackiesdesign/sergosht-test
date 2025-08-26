@@ -7,6 +7,8 @@ export default function Cart() {
     const [promoCode, setPromoCode] = useState('SERGOSHT');
     const [promoApplied, setPromoApplied] = useState(false);
     const [promoError, setPromoError] = useState('');
+    // Добавляем состояние для переключения доставка/самовывоз
+    const [isDelivery, setIsDelivery] = useState(true);
 
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
@@ -15,7 +17,7 @@ export default function Cart() {
         }
     }, []);
 
-    // Проверяем сумму заказа при изменении корзины и отменяем промокод если нужно
+   
     useEffect(() => {
         const total = getTotalPrice();
         if (promoApplied && total < 100000) {
@@ -47,8 +49,18 @@ export default function Cart() {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     };
 
-    // Логика доставки
+    // Модифицированная логика доставки с учетом выбора
     const getDeliveryInfo = () => {
+        // Если выбран самовывоз, доставка всегда бесплатная
+        if (!isDelivery) {
+            return {
+                cost: 0,
+                message: "Самовывоз",
+                showWarning: false
+            };
+        }
+
+        // Логика для доставки
         const total = getTotalPrice();
         
         if (total < 30000) {
@@ -73,7 +85,7 @@ export default function Cart() {
         }
     };
 
-    // Логика промокода
+  
     const applyPromoCode = () => {
         const total = getTotalPrice();
         
@@ -171,14 +183,26 @@ export default function Cart() {
               
                 <>
                     <div className="cart-tabs">
-                        <div className="cart-tab ">Доставка</div>
-                        <div className="cart-tab">Самовывоз</div>
+                        <div 
+                            className={`cart-tab ${isDelivery ? 'active' : ''}`}
+                            onClick={() => setIsDelivery(true)}
+                        >
+                            Доставка
+                        </div>
+                        <div 
+                            className={`cart-tab ${!isDelivery ? 'active' : ''}`}
+                            onClick={() => setIsDelivery(false)}
+                        >
+                            Самовывоз
+                        </div>
                     </div>
+                    
 
                     <div className="cart-address-section">
                         <div className="cart-address-info">
                             <span className='cart-tabi'>
-                                <span className="cart-location-icon">📍</span> улица Бахауддина Накшбанда, 158
+                                <span className="cart-location-icon">📍</span> 
+                                {isDelivery ? 'улица Бахауддина Накшбанда, 158' : 'Узбекистан, Бухара'}
                             </span>
                         </div>
                     </div>
@@ -257,6 +281,8 @@ export default function Cart() {
                             </div>
                         )}
                     </div>
+
+
                     
                     <div className="cart-order-summary">
                         <div className="cart-summary-row">
@@ -272,7 +298,9 @@ export default function Cart() {
                         )}
 
                         <div className="cart-summary-row">
-                            <span className="cart-summary-label">Доставка</span>
+                            <span className="cart-summary-label">
+                                {isDelivery ? 'Доставка' : 'Самовывоз'}
+                            </span>
                             <span className="cart-summary-value">
                                 {deliveryInfo.cost === 0 ? 'Бесплатно' : `${deliveryInfo.cost} UZS`}
                             </span>
@@ -282,12 +310,13 @@ export default function Cart() {
                             {deliveryInfo.message}
                         </div>
 
-                        
-
-                        <div className="cart-bonus-row">
-                            <span className="cart-summary-label">Бонусы к начислению</span>
-                            <span className="cart-bonus-value">+{Math.floor(getTotalPrice() / 100)} ○</span>
-                        </div>
+                        {/* Показываем бонусы к начислению только для доставки */}
+                        {isDelivery && (
+                            <div className="cart-bonus-row">
+                                <span className="cart-summary-label">Бонусы к начислению</span>
+                                <span className="cart-bonus-value">+{Math.floor(getTotalPrice() / 100)} ○</span>
+                            </div>
+                        )}
 
                         <div className="cart-total-row">
                             <span>Итого</span>
