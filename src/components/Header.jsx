@@ -8,6 +8,12 @@ export default function Header() {
   const [products, setProducts] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
+
+
+  const [finalTotal, setFinalTotal] = useState(
+    Number(localStorage.getItem("cartFinalTotal")) || 0
+  );
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
@@ -22,9 +28,13 @@ export default function Header() {
     setUserInfo(savedUserInfo);
   }, []);
 
-
+  
   useEffect(() => {
-    const handleStorageChange = () => updateCartInfo();
+    const handleStorageChange = () => {
+      updateCartInfo();
+      setFinalTotal(Number(localStorage.getItem("cartFinalTotal")) || 0); // 🔹 обновляем финальную сумму
+    };
+
     window.addEventListener('storage', handleStorageChange);
     return () => {
       window.removeEventListener('storage', handleStorageChange);
@@ -32,7 +42,7 @@ export default function Header() {
   }, []);
 
   const updateCartInfo = () => {
-    const savedCart = localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart')) || [];
+    const savedCart = (localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart'))) || [];
     const totalCount = savedCart.reduce((sum, item) => sum + (item.quantity || 0), 0);
     const totalPrice = savedCart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0);
     setCartCount(totalCount);
@@ -76,7 +86,10 @@ export default function Header() {
         {cartCount > 0 && (
           <>
             <span className="cart-badge">{cartCount}</span>
-            <span className="cart-badge">{cartTotal} UZS</span>
+           
+            <span className="cart-badge">
+              {finalTotal > 0 ? `${finalTotal} UZS` : `${cartTotal} UZS`}
+            </span>
           </>
         )}
       </button>
