@@ -1,13 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Добавили useNavigate в импорт
 
 export default function Cart() {
+    const navigate = useNavigate(); // Инициализировали хук
     const [cartItems, setCartItems] = useState([]);
     const [showConfirm, setShowConfirm] = useState(false);
     const [promoCode, setPromoCode] = useState('SERGOSHT');
     const [promoApplied, setPromoApplied] = useState(false);
     const [promoError, setPromoError] = useState('');
     const [isDelivery, setIsDelivery] = useState(true);
+
+    const handleCheckout = () => {
+        const token = localStorage.getItem('token');
+        const userInfo = localStorage.getItem('user_info');
+
+        if (!token || !userInfo) {
+            alert("У вас нет регистрации, пожалуйста, зарегистрируйтесь");
+            return;
+        }
+        if (!isDelivery) {
+            alert("Извините, самовывоз пока что не работает. Нажмите на доставку");
+            return;
+        }
+        navigate('/Click2'); // Теперь navigate работает
+    };
 
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
@@ -83,7 +99,6 @@ export default function Cart() {
             return;
         }
 
-        
         if (promoCode.trim().toUpperCase() === 'SERGOSHT') {
             setPromoApplied(true);
             setPromoError('');
@@ -92,7 +107,6 @@ export default function Cart() {
             setPromoApplied(false);
         }
     };
-
 
     const removePromoCode = () => {
         setPromoApplied(false);
@@ -148,7 +162,6 @@ export default function Cart() {
                 </div>
             </div>
 
-
             {cartItems.length === 0 ? (
                 <div className="cart-empty-fullscreen">
                     <div className="cart-empty-content">
@@ -159,15 +172,12 @@ export default function Cart() {
                     </div>
                 </div>
             ) : (
-
                 <>
                     {/* Доставка/самовывоз */}
                     <div className="cart-tabs">
                         <div className={`cart-tab ${isDelivery ? 'active' : ''}`} onClick={() => setIsDelivery(true)}>Доставка</div>
                         <div className={`cart-tab ${!isDelivery ? 'active' : ''}`} onClick={() => setIsDelivery(false)}>Самовывоз</div>
-
                     </div>
-                
 
                     <div className="cart-address-section">
                         <div className="cart-address-info">
@@ -228,9 +238,8 @@ export default function Cart() {
                     </div>
 
                     <div className="cart-bottom-padding"></div>
-                    <Link to={'/Click2'}><button className="cart-checkout-btn">Продолжить оформление</button></Link>
+                    <button className="cart-checkout-btn" onClick={handleCheckout}>Продолжить оформление</button>
                 </>
-
             )}
         </div>
     );

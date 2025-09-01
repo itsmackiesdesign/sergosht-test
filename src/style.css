@@ -2436,249 +2436,112 @@ p {
   color: #222;
 }
 
-/* Click2 */
-
-/* Exact clean CSS matching the screenshot styling */
 .checkout-container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: 480px;
+  margin: auto;
+  padding: 16px;
   background: #fff;
+  border-radius: 12px;
 }
 
 .delivery-section h2 {
   font-size: 18px;
-  font-weight: 800;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 12px;
 }
 
 .Click2-close-btn {
-  width: 30px;
-  height: 20px;
-  border: none;
-  margin-left: 350px;
-  text-align: center;
-  font-size: 15px;
-  cursor: pointer;
-  color: #b6b3b3;
-  border-radius: 50%;
-  background-color: rgb(245, 240, 240);
-  padding: 5px;
+  float: right;
+  font-size: 20px;
   text-decoration: none;
-}
-
-.address-box {
-  background: #f5f5f5;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 14px;
-  color: #222;
-  margin-bottom: 12px;
-}
-
-.address-inputs input {
-  width: 30%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-top: 6px;
+  color: #999;
 }
 
 .input-field {
-  width: 350px;
-  height: 35px;
+  width: 100%;
   padding: 12px;
-  font-size: 14px;
+  margin-bottom: 12px;
   border: 1px solid #ddd;
   border-radius: 12px;
-  margin-top: 8px;
-  background: #fafafa;
+  font-size: 14px;
 }
 
-.info-text {
-  font-size: 12px;
-  color: #777;
-  margin: 10px 0;
-}
-
-.preorder-select {
+.address-inputs {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-top: 8px;
 }
 
-.preorder-select select,
-.preorder-select input {
+.address-inputs input {
   flex: 1;
-  padding: 10px;
-  font-size: 14px;
+}
+
+.time-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.time-btn {
+  flex: 1;
+  padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
+  border-radius: 12px;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.time-btn.active {
+  background: black;
+  color: white;
 }
 
 .payment-select {
-  width: 100%;
-  height: 60px;
-  padding: 12px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fafafa;
-  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.order-summary-input {
+  margin: 16px 0;
 }
 
 .order-summary {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   padding: 16px;
-  margin-top: 20px;
+  border-top: 1px solid #ddd;
 }
 
-.order-summary-input input {
-  width: 350px;
-  height: 40px;
-  margin-right: 30px;
-  margin-bottom: 15px;
-  margin-top: 20px;
-  /* margin-left: 10px; */
+.order-items {
+  margin-bottom: 16px;
 }
 
-.order-items .item-row {
+.item-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 6px 0;
-  font-size: 14px;
-  color: #222;
+  margin: 6px 0;
 }
 
-.order-items .item-row.total {
-  font-weight: 600;
+.item-row.total {
+  font-weight: bold;
   font-size: 16px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
-  margin-top: 12px;
 }
 
 .small-text {
-  font-size: 11px;
-  color: #999;
-  margin-top: 2px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
 }
 
 .order-button {
   width: 100%;
-  background: #000;
-  color: #fff;
+  background: black;
+  color: white;
+  padding: 14px;
   border: none;
   border-radius: 12px;
   font-size: 16px;
-  padding: 14px;
   cursor: pointer;
-  margin-top: 16px;
-  font-weight: 500;
 }
 
-.order-button:active {
-  background: #333;
-}
-
-/* slider */
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Modal Window */
-.modal-window {
-  background-color: #fff;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  /* Ограничивает ширину */
-  max-height: 90vh;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-
-  /* Центрирование */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-/* Image Block */
-.modal-image-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.modal-image-wrapper img {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-}
-
-/* Close Button */
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: white;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Apply Button */
-.apply-button {
-  margin-top: 15px;
-  background-color: #1f1f1f;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-/* Promo Code */
-.promo-code {
-  margin-top: 12px;
-  display: inline-block;
-  padding: 8px 14px;
-  border: 1px dashed #1f1f1f;
-  color: #1f1f1f;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 18px;
-}
-
+/* Click2 */
 
 /* slider */
 
