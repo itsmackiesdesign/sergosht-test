@@ -29,7 +29,8 @@ export default function AppRouter() {
         <Route path="/Click2" element={<Click2 />} /> 
         <Route path="/sergo-project" element={<Sergo_Project />} />
         <Route path="/detail/:id" element={<ProductDetail />} />
-
+        <Route path="/order" element={<Order />} />
+        
       </Routes>
     </RouterProvider>
   );
