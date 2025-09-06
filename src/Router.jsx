@@ -1,5 +1,6 @@
 
-import { BrowserRouter as RouterProvider, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 import Layout from './Layout';
 import Reviews from './components/Reviews';
@@ -10,28 +11,29 @@ import Sergo_Project from './components/Sergo_project';
 import Click2 from './components/Click2';
 import Pickup from './components/Pickup';
 import MyProfile from './components/MyProfile';
-
+import Order from './components/Order';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 export default function AppRouter() {
   return (
-    <RouterProvider>
+    <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Layout />} />
-        <Route path="/my-profile" element={<MyProfile />} />
-
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Cart" element={<Cart />} /> 
-        <Route path="/Pickup" element={<Pickup />} /> 
-        {/* <Route path="/YandexMap" element={<YandexMap />} />  */}
-        <Route path="/Click2" element={<Click2 />} /> 
+        <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/pickup" element={<Pickup />} />
+        <Route path="/click2" element={<Click2 />} />
         <Route path="/sergo-project" element={<Sergo_Project />} />
         <Route path="/detail/:id" element={<ProductDetail />} />
-        <Route path="/order" element={<Order />} />
-        
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/order" element={<Order />} />
+        </Route>
       </Routes>
-    </RouterProvider>
+    </BrowserRouter>
   );
 }
+
