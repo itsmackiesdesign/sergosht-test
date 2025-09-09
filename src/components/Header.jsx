@@ -28,7 +28,7 @@ export default function Header() {
     setUserInfo(savedUserInfo);
   }, []);
 
-  
+
   useEffect(() => {
     const handleStorageChange = () => {
       updateCartInfo();
@@ -86,7 +86,7 @@ export default function Header() {
         {cartCount > 0 && (
           <>
             <span className="cart-badge">{cartCount}</span>
-           
+
             <span className="cart-badge">
               {finalTotal > 0 ? `${finalTotal} UZS` : `${cartTotal} UZS`}
             </span>
@@ -163,10 +163,13 @@ export default function Header() {
 
                   </button>
 
-                  <button className="menu-item al1">
+
+                  <Link to="/order" className="menu-item al1">
                     <i className="fa-solid fa-clock-rotate-left"></i>
                     История заказов
-                  </button>
+                  </Link>
+
+
 
                   <button className="menu-item al1">
                     <i className="fa-solid fa-wallet"></i>
@@ -247,7 +250,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

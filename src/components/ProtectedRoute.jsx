@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-export default function ProtectedRoute () {
+export default function ProtectedRoute() {
     const token = localStorage.getItem("token");
     const navigate = useNavigate()
 
@@ -10,7 +10,7 @@ export default function ProtectedRoute () {
             navigate('/login')
         }
     }, [])
-    
+
 
     return (
         <>
