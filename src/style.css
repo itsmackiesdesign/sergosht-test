@@ -639,6 +639,8 @@ body {
 
 /* Menu */
 
+/* Reviews */
+
 .review-icon {
   width: 22px;
   height: 22px;
@@ -814,6 +816,45 @@ body {
 .emoji {
   font-size: 16px;
 }
+
+.review-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.review-form textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.review-form button {
+  margin-top: 15px;
+  width: 100%;
+  background: blue;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/*Reviews  */
 
 /* Login */
 
